@@ -58,7 +58,10 @@ class ContatoController extends Controller
             'motivo_contato'=>'required',
             'mensagem'=>'required|max:2000',
         ]);
+
         SiteContato::create($request->all());
-        return view('site.contato',['motivo_contatos'=>$this->motivo_contatos]);
+        
+        $motivo_contatos = MotivoContato::all();
+        return view('site.contato',['motivo_contatos'=>$motivo_contatos]);
     }
 }
