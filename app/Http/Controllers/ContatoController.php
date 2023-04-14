@@ -50,14 +50,33 @@ class ContatoController extends Controller
         //dd($request);  
         
         //--realizar as validaçoes antes de persistir no banco
-        //--validate caso não atenda os requisitos faz o redirect para a pagina anterior para informar os erros pela variavel $errors na view 
-        $request->validate([
-            'nome'=>'required|min:5|max:50',
+        //--validate caso não atenda os requisitos faz o redirect para a pagina
+        // anterior para informar os erros pela variavel $errors na view 
+        
+        //--regras para os campos do formulario
+        $regras=[
+            'nome'=>'required|min:3|max:50|unique:site_contatos',
             'telefone'=>'required',
-            'email'=>'required',
-            'motivo_contato'=>'required',
-            'mensagem'=>'required|max:2000',
-        ]);
+            'email'=>'email',
+            'motivo_contatos_id'=>'required',
+            'mensagem'=>'required|min:10|max:2000',
+        ];
+
+        //mensagem personalizadas
+        $feedback=[
+            'nome.required'=>'O campo nome precisa ser preenchido',
+            'nome.min'=>'O campo nome precisa ter no mínimo 3 caracteres',
+            'nome.max'=>'O campo nome precisa ter no máximo 50 caracteres',
+            'nome.unique'=>'O campo nome ja consta na base de dados',
+            'telefone.required'=>'O campo telefone precisa se informado',
+            'email.email'=>'Informe um email valido',
+            'motivo_contatos_id.required'=>'Informe o motivo do contato ',
+            'mensagem.required'=>'Escrevea sua mensagem',
+            'mensagem.min'=>'Sua mensagem precisa ter no mínimo 10 carteres',
+            'mensagem.max'=>'Sua mensagem precisa ter no máximo 2000 carteres',
+        ];
+        
+        $request->validate($regras,$feedback);
 
         SiteContato::create($request->all());
         
