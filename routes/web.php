@@ -35,9 +35,11 @@ Route::post('/login', 'LoginController@autenticar')->name('site.login');
 
 //--rotas agrupadas  por prefixo app e nomeadas pela function name
 Route::middleware('autenticacao:parametro_padrao,visitante')->prefix('/app')->group(function(){
-    Route::get('/clientes',function(){ return 'Clientes';})->name('app.clientes');
-    Route::get('/fornecedores','FornecedoresController@index')->name('app.fornecedores');
-    Route::get('/produtos',function(){ return 'Produtos';})->name('app.produtos');
+    Route::get('/home','AppHomeController@index')->name('app.home');
+    Route::get('/sair','LoginController@sair')->name('app.sair');
+    Route::get('/cliente','AppClienteController@index')->name('app.cliente');
+    Route::get('/fornecedores','AppFornecedoresController@index')->name('app.fornecedor');
+    Route::get('/produto','AppProdutosController@index')->name('app.produto');
 });
 
 //--rota validando parametros com regex, obs o  '?' torna o paremetro opcional

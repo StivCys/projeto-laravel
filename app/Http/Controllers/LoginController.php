@@ -52,7 +52,7 @@ class LoginController extends Controller
             session_start();
             $_SESSION['user_name']=$user->name;
             $_SESSION['user_email']=$user->email;
-            return redirect()->route('app.clientes');
+            return redirect()->route('app.home');
 
         }else{
             return redirect()->route('site.login',['erro'=>1]);
@@ -63,5 +63,10 @@ class LoginController extends Controller
         //print_r($request->all());
         // echo"<pre>";
         //  redirect()->route('site.login');
+    }
+
+    public function sair(){
+        session_destroy();
+        return redirect()->route('site.index');
     }
 }
