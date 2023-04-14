@@ -30,8 +30,11 @@ Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 
 Route::get('/teste', 'TesteController@inicio')->name('site.teste');
 
+Route::get('/login/{erro?}', 'LoginController@index')->name('site.login');
+Route::post('/login', 'LoginController@autenticar')->name('site.login');
+
 //--rotas agrupadas  por prefixo app e nomeadas pela function name
-Route::prefix('/app')->group(function(){
+Route::middleware('autenticacao:parametro_padrao,visitante')->prefix('/app')->group(function(){
     Route::get('/clientes',function(){ return 'Clientes';})->name('app.clientes');
     Route::get('/fornecedores','FornecedoresController@index')->name('app.fornecedores');
     Route::get('/produtos',function(){ return 'Produtos';})->name('app.produtos');
