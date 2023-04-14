@@ -11,7 +11,7 @@ $factory->define(SiteContato::class, function (Faker $faker) {
         'nome'=>$faker->name,
         'telefone'=>$faker->phoneNumber,
         'email'=>$faker->email,
-        'motivo_contato'=>$faker->numberBetween(1,3),
+        'motivo_contatos_id'=>$faker->numberBetween(1,4),
         'mensagem'=>$faker->text(150),
     ];
 });

@@ -23,7 +23,8 @@ class SiteContatoSeeder extends Seeder
         $contato->save();
         */
 
-        //USANDO FACTORIES PARA ADIÇÃO EM MASSA
+        //USANDO FACTORIES PARA ADIÇÃO EM MASSA 
+        //--obs a factory esta no diretorio database/factories
         factory(SiteContato::class,100)->create();
     }
 }
