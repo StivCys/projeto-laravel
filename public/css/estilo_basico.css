@@ -197,3 +197,20 @@ button:hover {
 .pagination ul{
     list-style-type: none;
 }
+
+.btn_excluir{
+    width: 100%;
+    padding: 2px 2px;
+    margin: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: transparent;
+    background:hsl(0, 90%, 61%);
+    color: #ffffff;
+    cursor:pointer;
+
+}
+
+.btn_excluir:hover{
+    background:black;
+}

@@ -50,7 +50,9 @@ Route::middleware('autenticacao:parametro_padrao,visitante')->prefix('/app')->gr
     Route::get('/fornecedores/excluir/{id}','AppFornecedoresController@excluir')->name('app.fornecedor.excluir');
     
 
-    Route::get('/produto','AppProdutosController@index')->name('app.produto');
+    //Route::get('/produto','AppProdutosController@index')->name('app.produto');
+    //--O METODO ABAIXO CRIAR AS ROTAS E APELIDOS AUTOMATICAMENTE PARA CADA METODO DO CONTROLLER COM SEU DEVIDO VERBO HTTP 
+    Route::resource('produto','ProdutoController');
 });
 
 //--rota validando parametros com regex, obs o  '?' torna o paremetro opcional
