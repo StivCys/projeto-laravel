@@ -38,7 +38,18 @@ Route::middleware('autenticacao:parametro_padrao,visitante')->prefix('/app')->gr
     Route::get('/home','AppHomeController@index')->name('app.home');
     Route::get('/sair','LoginController@sair')->name('app.sair');
     Route::get('/cliente','AppClienteController@index')->name('app.cliente');
+
     Route::get('/fornecedores','AppFornecedoresController@index')->name('app.fornecedor');
+    Route::get('/fornecedores/listar','AppFornecedoresController@listar')->name('app.fornecedor.listar');
+    Route::post('/fornecedores/listar','AppFornecedoresController@listar')->name('app.fornecedor.listar');
+
+    Route::get('/fornecedores/adicionar','AppFornecedoresController@adicionar')->name('app.fornecedor.adicionar');
+    Route::post('/fornecedores/adicionar','AppFornecedoresController@adicionar')->name('app.fornecedor.adicionar');
+    Route::get('/fornecedores/alterar/{id}/{msg?}','AppFornecedoresController@alterar')->name('app.fornecedor.alterar');
+    Route::post('/fornecedores/alterar/{id}/{msg?}','AppFornecedoresController@alterar')->name('app.fornecedor.alterar');
+    Route::get('/fornecedores/excluir/{id}','AppFornecedoresController@excluir')->name('app.fornecedor.excluir');
+    
+
     Route::get('/produto','AppProdutosController@index')->name('app.produto');
 });
 

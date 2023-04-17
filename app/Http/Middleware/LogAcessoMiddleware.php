@@ -25,7 +25,7 @@ class LogAcessoMiddleware
         
         //--MANIPULANDO O RETORNO
         $resposta= $next($request);
-        $resposta->setStatusCode('201','O texto do statusText foi alterado');
+        //$resposta->setStatusCode('201','O texto do statusText foi alterado');
         // dd($resposta);
         return $resposta;
     }
